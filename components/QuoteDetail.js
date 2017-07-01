@@ -75,7 +75,7 @@ const saveQuote = async(quote) => {
 			}
 		} else {
 			// We don't have data, just save it!!
-			console.log('quoteDB is empty ! '+value);
+			console.log('quoteDB is empty ! ');
 			await AsyncStorage.setItem('quoteDB', JSON.stringify(info));
 		}
 	} catch (error) {

@@ -29,14 +29,15 @@ class Favoris extends Component {
 			console.log('remove quote => ',quote.id);
 			console.table(quoteStore);
 			await AsyncStorage.setItem('quoteDB', JSON.stringify(quoteStore));
-			this.refresh();
+			// this.refresh();
+			this.props.screenProps.refresh()
 		} catch(e) {
 			console.log('Remove quote problem' + e);
 		}
 	}
 
 	renderQuotes() {
-		return this.state.favoris.map((quote) => {
+		return this.props.screenProps.favoris.map((quote) => {
 			return (
 				<View key={quote.id} style={style.favorisQuote}>
 					<Text>{quote.author}</Text>
@@ -50,14 +51,13 @@ class Favoris extends Component {
 	}
 
 	loadText = () => {
-		if(this.state.favoris !== null && this.state.favoris.length > 0) {
-			console.log(this.state.favoris.length);
+		if(this.props.screenProps.favoris !== null && this.props.screenProps.favoris.length > 0) {
 			return(
 				<ScrollView>
 					{this.renderQuotes()}
 				</ScrollView>
 			)
-		} else if(this.state.favoris !== null && this.state.favoris.length < 1) {
+		} else if(this.props.screenProps.favoris !== null && this.props.screenProps.favoris.length < 1) {
 			return(
 				<Text>You have not favorites</Text>
 			);
@@ -69,12 +69,12 @@ class Favoris extends Component {
 	}
 
 	render() {
+		console.log(this.props.screenProps.favoris, "favorisi mean")
 		return (
 		<View style={style.container}>
 			<Button onPress={() => this.refresh()}>
 				<Text>Refresh</Text>
 			</Button>
-
 			{this.loadText()}
 
 		</View>
