@@ -9,7 +9,7 @@
 	"dependencies": {
 		"axios": "^0.16.2",
 		"html-to-text": "^3.3.0",
-		"moment": "^2.18.1",
+		"moment": "^2.19.3",
 		"native-base": "^2.1.5",
 		"react": "16.0.0-alpha.12",
 		"react-native": "0.45.1",
